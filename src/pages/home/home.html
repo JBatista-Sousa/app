@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Lista de Tarefas
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="royal">
+        <ion-badge item-end>{{tarefas.length}}</ion-badge>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list inset>
+
+
+
+    <ion-item>
+      <ion-label>Adicione uma tarefa</ion-label>
+      <ion-input type="text" [(ngModel)]="novaTarefa"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <button ion-button full (click)="add()">Adicionar</button>
+    </ion-item>
+
+  </ion-list>
+
+  <ion-list>
+    <button ion-item *ngFor="let tarefa of tarefas">
+      {{tarefa}}
+    </button>
+  </ion-list>
+
+
+</ion-content>
