@@ -28,10 +28,18 @@
   </ion-list>
 
   <ion-list>
-    <button ion-item *ngFor="let tarefa of tarefas">
-      {{tarefa}}
-    </button>
-  </ion-list>
+  <ion-item-sliding *ngFor="let tarefa of tarefas">
+    <ion-item>
+          {{tarefa}}
+    </ion-item>
+    <ion-item-options side="right">
+      <button ion-button color="danger">
+        <ion-icon name="md-trash"></ion-icon>
+        Lixeira
+      </button>
+    </ion-item-options>
+  </ion-item-sliding>
+</ion-list>
 
 
 </ion-content>
