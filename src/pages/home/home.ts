@@ -8,7 +8,7 @@ import { NavController } from 'ionic-angular';
 export class HomePage {
   tarefas;
   novaTarefa;
-  
+
   constructor(public navCtrl: NavController) {
     this.tarefas = ['comprar pão', 'ir para o trabalho', 'pagar as contas', 'jogar futebol', 'beber água'];
   }
@@ -17,5 +17,8 @@ export class HomePage {
     this.tarefas.push(this.novaTarefa);
     this.novaTarefa='';
   }
-
+delete(tarefa){
+  var i = this.tarefas.indexOf(tarefa);
+  this.tarefas.splice(i, 1);
+}
 }

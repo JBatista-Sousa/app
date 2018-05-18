@@ -14,8 +14,6 @@
 <ion-content padding>
   <ion-list inset>
 
-
-
     <ion-item>
       <ion-label>Adicione uma tarefa</ion-label>
       <ion-input type="text" [(ngModel)]="novaTarefa"></ion-input>
@@ -33,9 +31,8 @@
           {{tarefa}}
     </ion-item>
     <ion-item-options side="right">
-      <button ion-button color="danger">
+      <button ion-button color="danger" (click)="delete(tarefa)">
         <ion-icon name="md-trash"></ion-icon>
-        Lixeira
       </button>
     </ion-item-options>
   </ion-item-sliding>
