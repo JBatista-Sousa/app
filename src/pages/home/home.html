@@ -25,7 +25,10 @@
 
   </ion-list>
 
-  <ion-list>
+  <ion-list *ngIf="tarefas.length > 0">
+    <ion-list-header>
+      Lista de Tarefas
+    </ion-list-header>
   <ion-item-sliding *ngFor="let tarefa of tarefas">
     <ion-item>
           {{tarefa}}
@@ -37,6 +40,6 @@
     </ion-item-options>
   </ion-item-sliding>
 </ion-list>
-
+<p *ngIf="tarefas.length == 0 ">Não tem nenhuma tarefa cadastrada!</p>
 
 </ion-content>
