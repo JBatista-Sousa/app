@@ -8,9 +8,11 @@ import { NavController } from 'ionic-angular';
 export class HomePage {
   tarefas;
   novaTarefa;
+  dataatual;
 
   constructor(public navCtrl: NavController) {
     this.tarefas = ['comprar pão', 'ir para o trabalho', 'pagar as contas', 'jogar futebol', 'beber água'];
+    this.dataatual = new Date();
   }
 
   add() {

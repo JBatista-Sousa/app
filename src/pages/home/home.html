@@ -27,7 +27,7 @@
 
   <ion-list *ngIf="tarefas.length > 0">
     <ion-list-header>
-      Lista de Tarefas
+      Lista de {{dataatual | date:'fullDate'}}
     </ion-list-header>
   <ion-item-sliding *ngFor="let tarefa of tarefas">
     <ion-item>
