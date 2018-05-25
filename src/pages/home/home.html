@@ -1,45 +1,41 @@
 <ion-header>
+
   <ion-navbar>
     <ion-title>
-      Lista de Tarefas
+      Home
     </ion-title>
-    <ion-buttons end>
-      <button ion-button icon-only color="royal">
-        <ion-badge item-end>{{tarefas.length}}</ion-badge>
-      </button>
-    </ion-buttons>
   </ion-navbar>
+
 </ion-header>
 
+
 <ion-content padding>
-  <ion-list inset>
+  <ion-card class="cards-list-demo">
+  <ion-card-header>
+    Serviços
+  </ion-card-header>
 
-    <ion-item>
-      <ion-label>Adicione uma tarefa</ion-label>
-      <ion-input type="text" [(ngModel)]="novaTarefa"></ion-input>
-    </ion-item>
+  <ion-list>
+    <button ion-item (click)="exibirLista()">
+      <ion-icon name="md-list" item-start></ion-icon>
+      Lista de Tarefas
+    </button>
 
-    <ion-item>
-      <button ion-button full (click)="add()">Adicionar</button>
-    </ion-item>
+    <button ion-item>
+        <ion-icon name="md-basket" item-start></ion-icon>
+        Lista de Compras
+    </button>
+
+    <button ion-item>
+      <ion-icon name="logo-usd" item-start></ion-icon>
+      Gestão de Contas
+    </button>
+
+    <button ion-item>
+      <ion-icon name="md-contacts" item-start></ion-icon>
+      Contatinhos
+    </button>
 
   </ion-list>
-
-  <ion-list *ngIf="tarefas.length > 0">
-    <ion-list-header>
-      Lista de {{dataatual | date:'fullDate'}}
-    </ion-list-header>
-  <ion-item-sliding *ngFor="let tarefa of tarefas">
-    <ion-item>
-          {{tarefa}}
-    </ion-item>
-    <ion-item-options side="right">
-      <button ion-button color="danger" (click)="delete(tarefa)">
-        <ion-icon name="md-trash"></ion-icon>
-      </button>
-    </ion-item-options>
-  </ion-item-sliding>
-</ion-list>
-<p *ngIf="tarefas.length == 0 ">Não tem nenhuma tarefa cadastrada!</p>
-
+</ion-card>
 </ion-content>
