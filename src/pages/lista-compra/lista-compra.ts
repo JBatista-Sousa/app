@@ -3,21 +3,21 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-lista-comnpras',
-  templateUrl: 'lista-compras.html',
+  selector: 'page-lista-compra',
+  templateUrl: 'lista-compra.html',
 })
-export class ListaComprasPage {
+export class ListaCompraPage {
   compras;
   novaCompra;
   dataatual;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.compras = ['Arroz', 'Bolo'];
+    this.compras = ['Arroz', 'Feijão'];
     this.dataatual = new Date();
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ListaComprasPage');
+    console.log('ionViewDidLoad ListaCompraPage');
   }
   add() {
     this.compras.push(this.novaCompra);

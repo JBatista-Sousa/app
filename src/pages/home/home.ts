@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { ListaTarefaPage} from '../lista-tarefa/lista-tarefa';
-import { ListaComprasPage} from '../lista-compras/lista-compras';
+import { ListaTarefaPage} from '../lista-tarefa/lista-tarefa'
+import { ListaCompraPage} from '../lista-compra/lista-compra'
+
 
 @Component({
   selector: 'page-home',
@@ -15,7 +16,7 @@ export class HomePage {
     this.navCtrl.push(ListaTarefaPage);
   }
 
-  exibirListaCompras() {
-    this.navCtrl.push(ListaComprasPage);
+  exibirCompra() {
+    this.navCtrl.push(ListaCompraPage);
   }
 }
