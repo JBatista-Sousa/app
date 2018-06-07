@@ -49,6 +49,14 @@ export class ListaCompraPage {
           var i = this.compras.indexOf(compra);
           this.compras.splice(i, 1);
 
+          let toast = this.toastCtrl.create({
+            message: 'item excluído com susseço',
+            duration: 3000,
+            position: 'top'
+          });
+
+          toast.present();
+
         }
       }
     ]
