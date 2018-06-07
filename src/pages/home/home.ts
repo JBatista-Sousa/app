@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ListaTarefaPage} from '../lista-tarefa/lista-tarefa';
 import { ListaCompraPage} from '../lista-compra/lista-compra';
-import {GestaoContaPage} from '../gestao-conta/gestao-conta';
+
 
 
 @Component({
@@ -21,7 +21,4 @@ export class HomePage {
     this.navCtrl.push(ListaCompraPage);
   }
 
-  exibirConta() {
-    this.navCtrl.push(GestaoContaPage);
-  }
 }
