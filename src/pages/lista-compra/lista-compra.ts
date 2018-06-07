@@ -31,7 +31,27 @@ export class ListaCompraPage {
 
   }
   delete(compra){
-    var i = this.compras.indexOf(compra);
-    this.compras.splice(i, 1);
+    let alert = this.alertCtrl.create({
+    title: 'Confirmação',
+    message: 'Deseja excluir este item?',
+    buttons: [
+      {
+        text: 'Não',
+        handler: () => {
+
+        }
+      },
+      {
+        text: 'Sim',
+        handler: () => {
+          var i = this.compras.indexOf(compra);
+          this.compras.splice(i, 1);
+
+        }
+      }
+    ]
+  });
+  alert.present();
+  
   }
 }
