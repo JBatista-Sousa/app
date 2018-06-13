@@ -14,63 +14,72 @@ export class ListaTarefaPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public alertCtrl:AlertController, public toastCtrl:ToastController,
     public loadingCtrl: LoadingController) {
-    this.tarefas = ['Estudar para o enem', 'Beber água', 'Comer direito'];
-    this.dataatual = new Date();
+      this.tarefas = ['Estudar ddm', 'Jogar futebol', 'Ouvir música'];
+      this.dataatual = new Date();
+    }
+
+    ionViewDidLoad() {
+      console.log('ionViewDidLoad ListaTarefaPage');
+    }
+    add() {
+      let loading = this.loadingCtrl.create({
+        content: 'Processando...'
+      });
+
+      loading.present();
+
+      setTimeout(() => {
+        this.tarefas.push(this.novaTarefa);
+        this.novaTarefa='';
+        let toast = this.toastCtrl.create({
+          message: 'Tarefa criada com sucesso',
+          duration: 3000,
+          position: 'top'
+        });
+
+        toast.present();
+        loading.dismiss();
+      }, 5000);
+    }
+
+    delete(tarefa){
+      let alert = this.alertCtrl.create({
+        title: 'Confirmação',
+        message: 'Deseja excluir essa tarefa?',
+        buttons: [
+          {
+            text: 'Não',
+            handler: () => {
+
+            }
+          },
+          {
+            text: 'Sim',
+            handler: () => {
+
+              let loading = this.loadingCtrl.create({
+                content: 'Processando...'
+              });
+
+              loading.present();
+
+              var i = this.tarefas.indexOf(tarefa);
+              this.tarefas.splice(i, 1);
+
+              let toast = this.toastCtrl.create({
+                message: 'Tarefa excluída com sucesso',
+                duration: 3000,
+                position: 'top'
+              });
+
+              toast.present();
+
+              loading.dismiss();
+            }
+
+          }
+        ]
+      });
+      alert.present();  
+    }
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ListaTarefaPage');
-  }
-  add() {
-    let loading = this.loadingCtrl.create({
-    content: 'Processando...'
-  });
-
-  loading.present();
-
-  setTimeout(() => {
-    this.tarefas.push(this.novaTarefa);
-    this.novaTarefa='';
-    let toast = this.toastCtrl.create({
-      message: 'Tarefa criada com sucesso',
-      duration: 3000,
-      position: 'top'
-    });
-
-    toast.present();
-    loading.dismiss();
-  }, 5000);
-}
-
-  delete(tarefa){
-    let alert = this.alertCtrl.create({
-    title: 'Confirmação',
-    message: 'Deseja excluir essa tarefa?',
-    buttons: [
-      {
-        text: 'Não',
-        handler: () => {
-
-        }
-      },
-      {
-        text: 'Sim',
-        handler: () => {
-            var i = this.tarefas.indexOf(tarefa);
-            this.tarefas.splice(i, 1);
-
-            let toast = this.toastCtrl.create({
-              message: 'Tarefa excluída com susseço',
-              duration: 3000,
-              position: 'top'
-            });
-
-            toast.present();
-        }
-      }
-    ]
-  });
-  alert.present();
-
-  }
-}

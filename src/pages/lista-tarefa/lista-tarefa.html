@@ -29,17 +29,17 @@
     <ion-list-header>
       Lista de {{dataatual | date:'fullDate'}}
     </ion-list-header>
-  <ion-item-sliding *ngFor="let tarefa of tarefas">
-    <ion-item>
-          {{tarefa}}
-    </ion-item>
-    <ion-item-options side="right">
-      <button ion-button color="danger" (click)="delete(tarefa)">
-        <ion-icon name="md-trash"></ion-icon>
-      </button>
-    </ion-item-options>
-  </ion-item-sliding>
-</ion-list>
-<p *ngIf="tarefas.length == 0 ">Não tem nenhuma tarefa cadastrada!</p>
+    <ion-item-sliding *ngFor="let tarefa of tarefas">
+      <ion-item>
+        {{tarefa}}
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="danger" (click)="delete(tarefa)">
+          <ion-icon name="md-trash"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <p *ngIf="tarefas.length == 0 ">Não tem nenhuma tarefa cadastrada!</p>
 
 </ion-content>
