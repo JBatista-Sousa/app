@@ -63,6 +63,7 @@ export class ListaTarefaPage {
 
               loading.present();
 
+              setTimeout(() => {
               var i = this.tarefas.indexOf(tarefa);
               this.tarefas.splice(i, 1);
 
@@ -75,6 +76,8 @@ export class ListaTarefaPage {
               toast.present();
 
               loading.dismiss();
+              }, 5000);
+            
             }
 
           }

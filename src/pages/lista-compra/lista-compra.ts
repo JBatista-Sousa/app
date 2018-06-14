@@ -44,47 +44,46 @@ export class ListaCompraPage {
     }
 
     delete(compra){
-
-
       let alert = this.alertCtrl.create({
         title: 'Confirmação',
-        message: 'Deseja excluir este item?',
+        message: 'Deseja excluir essa compra?',
         buttons: [
           {
             text: 'Não',
             handler: () => {
-
+  
             }
           },
           {
             text: 'Sim',
             handler: () => {
-
+  
               let loading = this.loadingCtrl.create({
-                content: 'Processando...'
+                content: 'Excluindo...'
               });
-
+  
               loading.present();
-
-              var i = this.compras.indexOf(compra);
-              this.compras.splice(i, 1);
-
-
-              let toast = this.toastCtrl.create({
-                message: 'item excluído com sucesso',
-                duration: 3000,
-                position: 'top'
-              });
-
-              toast.present();
-              loading.dismiss();
+              setTimeout(() => {
+                var i = this.compras.indexOf(compra);
+                this.compras.splice(i, 1);
+  
+                let toast = this.toastCtrl.create({
+                  message: 'Compra excluída com sucesso',
+                  duration: 5000,
+                  position: 'bottom'
+                });
+  
+                toast.present();
+  
+                loading.dismiss();
+              }, 5000);
             }
-              
+  
           }
-
         ]
       });
       alert.present();
-
     }
   }
+  
+  
