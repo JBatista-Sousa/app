@@ -14,7 +14,7 @@ export class ListaCompraPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public alertCtrl:AlertController, public toastCtrl:ToastController,
     public loadingCtrl: LoadingController) {
-      this.compras = ['Pitú', 'Corote'];
+      this.compras = ['Coco', 'Corote'];
       this.dataatual = new Date();
     }
 
