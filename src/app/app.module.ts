@@ -8,13 +8,16 @@ import { ListaCompraPage } from '../pages/lista-compra/lista-compra';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { NovaTarefaPage } from '../pages/nova-tarefa/nova-tarefa';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ListaTarefaPage,
-    ListaCompraPage
+    ListaCompraPage,
+    NovaTarefaPage
+
   ],
   imports: [
     BrowserModule,
@@ -25,7 +28,8 @@ import { HomePage } from '../pages/home/home';
     MyApp,
     HomePage,
     ListaTarefaPage,
-    ListaCompraPage
+    ListaCompraPage,
+    NovaTarefaPage
   ],
   providers: [
     StatusBar,

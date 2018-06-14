@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, ToastController, LoadingController} from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ToastController, LoadingController, ModalController } from 'ionic-angular';
+import { NovaTarefaPage } from '../nova-tarefa/nova-tarefa';
 
 @IonicPage()
 @Component({
@@ -8,62 +9,69 @@ import { IonicPage, NavController, NavParams, AlertController, ToastController, 
 })
 export class ListaTarefaPage {
   tarefas;
-  novaTarefa;
   dataatual;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    public alertCtrl:AlertController, public toastCtrl:ToastController,
-    public loadingCtrl: LoadingController) {
-      this.tarefas = ['Estudar ddm', 'Jogar futebol', 'Ouvir música'];
-      this.dataatual = new Date();
-    }
+    public alertCtrl: AlertController, public toastCtrl: ToastController,
+    public loadingCtrl: LoadingController, public modalCtrl: ModalController) {
+    this.tarefas = ['Estudar ddm', 'Jogar futebol', 'Ouvir música'];
+    this.dataatual = new Date();
+  }
 
-    ionViewDidLoad() {
-      console.log('ionViewDidLoad ListaTarefaPage');
-    }
-    add() {
-      let loading = this.loadingCtrl.create({
-        content: 'Processando...'
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad ListaTarefaPage');
+  }
+
+  novatarefa() {
+    let modal = this.modalCtrl.create(NovaTarefaPage, {});
+    modal.onDidDismiss(data => {
+      this.add(data.novaTarefa);
+    })
+    modal.present();
+  }
+
+  add(novaTarefa) {
+    let loading = this.loadingCtrl.create({
+      content: 'Processando...'
+    });
+
+    loading.present();
+
+    setTimeout(() => {
+      this.tarefas.push(novaTarefa);
+      let toast = this.toastCtrl.create({
+        message: 'Tarefa criada com sucesso',
+        duration: 3000,
+        position: 'top'
       });
 
-      loading.present();
+      toast.present();
+      loading.dismiss();
+    }, 5000);
+  }
 
-      setTimeout(() => {
-        this.tarefas.push(this.novaTarefa);
-        this.novaTarefa='';
-        let toast = this.toastCtrl.create({
-          message: 'Tarefa criada com sucesso',
-          duration: 3000,
-          position: 'top'
-        });
+  delete(tarefa) {
+    let alert = this.alertCtrl.create({
+      title: 'Confirmação',
+      message: 'Deseja excluir essa tarefa?',
+      buttons: [
+        {
+          text: 'Não',
+          handler: () => {
 
-        toast.present();
-        loading.dismiss();
-      }, 5000);
-    }
+          }
+        },
+        {
+          text: 'Sim',
+          handler: () => {
 
-    delete(tarefa){
-      let alert = this.alertCtrl.create({
-        title: 'Confirmação',
-        message: 'Deseja excluir essa tarefa?',
-        buttons: [
-          {
-            text: 'Não',
-            handler: () => {
+            let loading = this.loadingCtrl.create({
+              content: 'Processando...'
+            });
 
-            }
-          },
-          {
-            text: 'Sim',
-            handler: () => {
+            loading.present();
 
-              let loading = this.loadingCtrl.create({
-                content: 'Processando...'
-              });
-
-              loading.present();
-
-              setTimeout(() => {
+            setTimeout(() => {
               var i = this.tarefas.indexOf(tarefa);
               this.tarefas.splice(i, 1);
 
@@ -76,13 +84,13 @@ export class ListaTarefaPage {
               toast.present();
 
               loading.dismiss();
-              }, 5000);
-            
-            }
+            }, 5000);
 
           }
-        ]
-      });
-      alert.present();  
-    }
+
+        }
+      ]
+    });
+    alert.present();
   }
+}
