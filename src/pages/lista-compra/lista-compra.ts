@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, ToastController, LoadingController} from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ToastController, LoadingController, ModalController} from 'ionic-angular';
+import { NovaCompraPage } from '../nova-compra/nova-compra';
 
 @IonicPage()
 @Component({
@@ -8,12 +9,11 @@ import { IonicPage, NavController, NavParams, AlertController, ToastController, 
 })
 export class ListaCompraPage {
   compras;
-  novaCompra;
   dataatual;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public alertCtrl:AlertController, public toastCtrl:ToastController,
-    public loadingCtrl: LoadingController) {
+    public loadingCtrl: LoadingController, public modalCtrl: ModalController) {
       this.compras = ['Coco', 'Corote'];
       this.dataatual = new Date();
     }
@@ -21,7 +21,16 @@ export class ListaCompraPage {
     ionViewDidLoad() {
       console.log('ionViewDidLoad ListaCompraPage');
     }
-    add() {
+    
+    novacompra() {
+      let modal = this.modalCtrl.create(NovaCompraPage, {});
+      modal.onDidDismiss(data => {
+        this.add(data.novaCompra);
+      })
+      modal.present();
+    }
+
+    add(novaCompra) {
       let loading = this.loadingCtrl.create({
         content: 'Processando...'
       });
@@ -30,8 +39,7 @@ export class ListaCompraPage {
 
 
       setTimeout(() => {
-        this.compras.push(this.novaCompra);
-        this.novaCompra='';
+        this.compras.push(novaCompra);
         let toast = this.toastCtrl.create({
           message: 'Ítem adicionado com sucesso',
           duration: 3000,
@@ -63,6 +71,7 @@ export class ListaCompraPage {
               });
   
               loading.present();
+
               setTimeout(() => {
                 var i = this.compras.indexOf(compra);
                 this.compras.splice(i, 1);
@@ -85,5 +94,5 @@ export class ListaCompraPage {
       alert.present();
     }
   }
-  
-  
+
+
