@@ -10,13 +10,13 @@ import { Storage } from '@ionic/storage';
 export class ListaTarefaPage {
   tarefas;
   dataatual;
-  
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public alertCtrl: AlertController, public toastCtrl: ToastController,
     public loadingCtrl: LoadingController, public modalCtrl: ModalController, public storage: Storage) {
+
     this.tarefas = [];
-    this.storage.get('tarefas').then((val)=>{
+    this.storage.get('tarefas').then((val) => {
       this.tarefas = val;
     });
     this.dataatual = new Date();
@@ -42,11 +42,11 @@ export class ListaTarefaPage {
 
 
     this.tarefas.push(novaTarefa);
-    this.storage.set('tarefas',this.tarefas).then(()=>{
+    this.storage.set('tarefas', this.tarefas).then(() => {
       let toast = this.toastCtrl.create({
         message: 'Tarefa criada com sucesso',
         duration: 3000,
-        position: 'top'
+        position: 'bottom'
       });
 
       toast.present();
@@ -77,7 +77,7 @@ export class ListaTarefaPage {
 
             var i = this.tarefas.indexOf(tarefa);
             this.tarefas.splice(i, 1);
-            this.storage.set('tarefas',this.tarefas).then(()=>{
+            this.storage.set('tarefas', this.tarefas).then(() => {
               let toast = this.toastCtrl.create({
                 message: 'Tarefa excluída com sucesso',
                 duration: 3000,
