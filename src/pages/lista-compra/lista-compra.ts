@@ -42,13 +42,13 @@ export class ListaCompraPage {
         this.compras.push(novaCompra);
         let toast = this.toastCtrl.create({
           message: 'Ítem adicionado com sucesso',
-          duration: 3000,
+          duration: 1500,
           position: 'top'
         });
 
         toast.present();
         loading.dismiss();
-      }, 5000);
+      }, 1500);
     }
 
     delete(compra){
@@ -78,14 +78,14 @@ export class ListaCompraPage {
   
                 let toast = this.toastCtrl.create({
                   message: 'Compra excluída com sucesso',
-                  duration: 5000,
+                  duration: 1500,
                   position: 'bottom'
                 });
   
                 toast.present();
   
                 loading.dismiss();
-              }, 5000);
+              }, 1500);
             }
   
           }

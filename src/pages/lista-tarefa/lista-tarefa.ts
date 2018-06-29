@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, ToastController, LoadingController, ModalController } from 'ionic-angular';
 import { NovaTarefaPage } from '../nova-tarefa/nova-tarefa';
-
+import { Storage } from '@ionic/storage';
 @IonicPage()
 @Component({
   selector: 'page-lista-tarefa',
@@ -10,11 +10,15 @@ import { NovaTarefaPage } from '../nova-tarefa/nova-tarefa';
 export class ListaTarefaPage {
   tarefas;
   dataatual;
+  
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public alertCtrl: AlertController, public toastCtrl: ToastController,
-    public loadingCtrl: LoadingController, public modalCtrl: ModalController) {
-    this.tarefas = ['Estudar ddm', 'Jogar futebol', 'Ouvir música'];
+    public loadingCtrl: LoadingController, public modalCtrl: ModalController, public storage: Storage) {
+    this.tarefas = [];
+    this.storage.get('tarefas').then((val)=>{
+      this.tarefas = val;
+    });
     this.dataatual = new Date();
   }
 
@@ -34,11 +38,11 @@ export class ListaTarefaPage {
     let loading = this.loadingCtrl.create({
       content: 'Processando...'
     });
-
     loading.present();
 
-    setTimeout(() => {
-      this.tarefas.push(novaTarefa);
+
+    this.tarefas.push(novaTarefa);
+    this.storage.set('tarefas',this.tarefas).then(()=>{
       let toast = this.toastCtrl.create({
         message: 'Tarefa criada com sucesso',
         duration: 3000,
@@ -47,7 +51,7 @@ export class ListaTarefaPage {
 
       toast.present();
       loading.dismiss();
-    }, 5000);
+    });
   }
 
   delete(tarefa) {
@@ -71,20 +75,19 @@ export class ListaTarefaPage {
 
             loading.present();
 
-            setTimeout(() => {
-              var i = this.tarefas.indexOf(tarefa);
-              this.tarefas.splice(i, 1);
-
+            var i = this.tarefas.indexOf(tarefa);
+            this.tarefas.splice(i, 1);
+            this.storage.set('tarefas',this.tarefas).then(()=>{
               let toast = this.toastCtrl.create({
                 message: 'Tarefa excluída com sucesso',
                 duration: 3000,
-                position: 'top'
+                position: 'bottom'
               });
 
               toast.present();
 
               loading.dismiss();
-            }, 5000);
+            });
 
           }
 
