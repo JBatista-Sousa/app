@@ -32,8 +32,6 @@ export class PerfilPage {
     });
     loading.present();
 
-
-    //this.tarefas.push(novaTarefa);
     this.storage.set('usuario', this.usuario).then(() => {
       let toast = this.toastCtrl.create({
         message: 'Usuário cadastrado com sucesso',

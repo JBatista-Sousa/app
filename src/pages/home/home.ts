@@ -30,6 +30,9 @@ export class HomePage {
       
     });
   }
+  exibirPerfil() {
+    this.navCtrl.push(PerfilPage);
+  }
   exibirLista() {
     this.navCtrl.push(ListaTarefaPage);
   }
