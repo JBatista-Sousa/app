@@ -11,6 +11,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { NovaTarefaPage } from '../pages/nova-tarefa/nova-tarefa';
 import { NovaCompraPage } from '../pages/nova-compra/nova-compra';
+import { PerfilPage } from '../pages/perfil/perfil';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { NovaCompraPage } from '../pages/nova-compra/nova-compra';
     ListaTarefaPage,
     ListaCompraPage,
     NovaTarefaPage,
-    NovaCompraPage
+    NovaCompraPage,
+    PerfilPage
   ],
   imports: [
     BrowserModule,
@@ -33,7 +35,8 @@ import { NovaCompraPage } from '../pages/nova-compra/nova-compra';
     ListaTarefaPage,
     ListaCompraPage,
     NovaTarefaPage,
-    NovaCompraPage
+    NovaCompraPage,
+    PerfilPage
   ],
   providers: [
     StatusBar,
