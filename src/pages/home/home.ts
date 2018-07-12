@@ -23,15 +23,17 @@ export class HomePage {
 
     this.storage.get('usuario').then((val) => {
       if(!val){
-        this.navCtrl.push(PerfilPage)
+        this.navCtrl.push(PerfilPage, {'usuario':this.usuario});
       }else{
         this.usuario = val;
       }
       
     });
   }
-  exibirPerfil() {
-    this.navCtrl.push(PerfilPage);
+
+  exibirPerfil(){
+    this.navCtrl.push(PerfilPage, {'usuario':this.usuario});   
+        
   }
   exibirLista() {
     this.navCtrl.push(ListaTarefaPage);

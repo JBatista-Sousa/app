@@ -20,10 +20,8 @@ export class PerfilPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage, public toastCtrl: ToastController,
     public loadingCtrl: LoadingController) {
-      this.usuario = {
-        'nome':'',
-        'img':''
-      }
+      this.usuario = this.navParams.get('usuario');
+       
   }
 
   cadastro() {
