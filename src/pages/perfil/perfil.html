@@ -20,11 +20,16 @@
         <ion-label>Nome do usuário</ion-label>
         <ion-input type="text" [(ngModel)]="usuario.nome"></ion-input>
       </ion-item>
-  
+
+      <ion-item>
+        <img [src]="usuario.img" *ngIf="usuario.img"/>
+        <button ion-button full (click)="tirarFoto()">atualizarFoto</button>
+      </ion-item>
+
       <ion-item>
         <button ion-button full (click)="cadastro()">OK</button>
       </ion-item>
-  
+
     </ion-list>
   
   </ion-content>

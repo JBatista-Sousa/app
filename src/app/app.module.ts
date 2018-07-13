@@ -12,6 +12,7 @@ import { HomePage } from '../pages/home/home';
 import { NovaTarefaPage } from '../pages/nova-tarefa/nova-tarefa';
 import { NovaCompraPage } from '../pages/nova-compra/nova-compra';
 import { PerfilPage } from '../pages/perfil/perfil';
+import { Camera } from '@ionic-native/camera';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { PerfilPage } from '../pages/perfil/perfil';
     PerfilPage
   ],
   providers: [
+    Camera,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
